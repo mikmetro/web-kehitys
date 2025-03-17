@@ -1,0 +1,26 @@
+body {
+    font-family: "Helvetica";
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    background: red;
+    font-size: 2rem;
+}
+
+img {
+    border: 8px solid blue;
+    border-radius: 64px;
+}
+
+table tr:nth-child(even) {
+    background: green;
+}
+
+ul {
+    list-style-type: "#";
+}
