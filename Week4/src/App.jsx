@@ -4,6 +4,7 @@ import Home from './views/Home';
 import Profile from './views/Profile';
 import Single from './views/Single';
 import Upload from './views/Upload';
+import Login from './views/Login';
 import './App.css';
 
 const App = () => {
@@ -15,6 +16,7 @@ const App = () => {
           <Route path="/profile" element={<Profile />} />
           <Route path="/single" element={<Single />} />
           <Route path="/upload" element={<Upload />} />
+          <Route path="/login" element={<Login />} />
         </Route>
       </Routes>
     </BrowserRouter>
