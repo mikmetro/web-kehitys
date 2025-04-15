@@ -6,19 +6,46 @@ import Single from './views/Single';
 import Upload from './views/Upload';
 import Login from './views/Login';
 import './App.css';
+import {UserProvider} from './contexts/UserContext';
+import Logout from './views/Logout';
+import ProtectedRoute from './components/ProtectedRoute';
 
 const App = () => {
   return (
     <BrowserRouter basename={import.meta.env.BASE_URL}>
-      <Routes>
-        <Route element={<Layout />}>
-          <Route path="/" element={<Home />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/single" element={<Single />} />
-          <Route path="/upload" element={<Upload />} />
-          <Route path="/login" element={<Login />} />
-        </Route>
-      </Routes>
+      <UserProvider>
+        <Routes>
+          <Route element={<Layout />}>
+            <Route path="/" element={<Home />} />
+            <Route
+              path="/profile"
+              element={
+                <ProtectedRoute>
+                  <Profile />
+                </ProtectedRoute>
+              }
+            />
+            <Route path="/single" element={<Single />} />
+            <Route
+              path="/upload"
+              element={
+                <ProtectedRoute>
+                  <Upload />
+                </ProtectedRoute>
+              }
+            />
+            <Route path="/login" element={<Login />} />
+            <Route
+              path="/logout"
+              element={
+                <ProtectedRoute>
+                  <Logout />
+                </ProtectedRoute>
+              }
+            />
+          </Route>
+        </Routes>
+      </UserProvider>
     </BrowserRouter>
   );
 };
