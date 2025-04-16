@@ -1,4 +1,5 @@
 import {fetchData} from '../utils/fetchData';
+import useMedia from './useMedia';
 
 const useAuthentication = () => {
   const postLogin = async (inputs) => {
@@ -15,7 +16,6 @@ const useAuthentication = () => {
     );
 
     console.log(loginResult);
-    window.localStorage.setItem('token', loginResult.token);
 
     return loginResult;
   };
@@ -55,4 +55,34 @@ const useUser = () => {
   return {getUserByToken, postUser};
 };
 
-export {useAuthentication, useUser};
+const useFile = () => {
+  // ApiHooks.js
+  const postFile = async (file, token) => {
+    // TODO: create FormData object
+    // TODO: add file to FormData
+    // TODO: upload the file to file server and get the file data (url = import.meta.env.VITE_UPLOAD_SERVER + '/upload')
+    // TODO: return the file data.
+    const formData = new FormData();
+    formData.append('file', file);
+
+    console.log('formData', formData);
+
+    const fetchOptions = {
+      method: 'POST',
+      headers: {
+        Authorization: 'Bearer: ' + token,
+      },
+      body: formData,
+    };
+    const uploadResult = await fetchData(
+      import.meta.env.VITE_UPLOAD_SERVER + '/upload',
+      fetchOptions
+    );
+
+    return uploadResult;
+  };
+
+  return {postFile};
+};
+
+export {useAuthentication, useUser, useFile};

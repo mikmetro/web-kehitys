@@ -20,9 +20,18 @@ const useForm = (callback, initState) => {
     }));
   };
 
+  // Upload.jsx
+  const handleFileChange = (evt) => {
+    if (evt.target.files) {
+      console.log(evt.target.files[0]);
+      // TODO: set the file to state
+    }
+  };
+
   return {
     handleSubmit,
     handleInputChange,
+    handleFileChange,
     inputs,
   };
 };
