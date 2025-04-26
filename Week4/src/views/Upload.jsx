@@ -1,7 +1,6 @@
 import {useState} from 'react';
 import {useForm} from '../hooks/formHooks';
-import {useFile} from '../hooks/apiHooks';
-import useMedia from '../hooks/useMedia';
+import {useFile, useMedia} from '../hooks/apiHooks';
 import TextInput from '../components/ui/TextInput';
 // Upload.jsx
 const Upload = () => {
@@ -84,7 +83,7 @@ const Upload = () => {
         />
         <button
           type="submit"
-          disabled={file && inputs?.title.length > 3 ? false : true}
+          disabled={!file || inputs?.title?.length <= 3}
           className="mt-4 w-fit cursor-pointer rounded bg-stone-900 p-2"
         >
           Upload

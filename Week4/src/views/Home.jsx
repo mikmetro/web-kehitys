@@ -1,10 +1,10 @@
 import {useState} from 'react';
 import MediaRow from '../components/MediaRow';
 import SingleView from '../components/SingleView';
-import useMedia from '../hooks/useMedia';
+import {useMedia} from '../hooks/apiHooks.js';
 
 const Home = () => {
-  const {mediaArray} = useMedia();
+  const {mediaArray, modifyMedia, deleteMedia} = useMedia();
   const [selectedItem, setSelectedItem] = useState(null);
 
   return (
@@ -25,7 +25,13 @@ const Home = () => {
         </thead>
         <tbody>
           {mediaArray.map((item, i) => (
-            <MediaRow key={i} item={item} setSelectedItem={setSelectedItem} />
+            <MediaRow
+              key={i}
+              item={item}
+              setSelectedItem={setSelectedItem}
+              modifyMedia={modifyMedia}
+              deleteMedia={deleteMedia}
+            />
           ))}
         </tbody>
       </table>
