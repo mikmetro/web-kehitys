@@ -9,9 +9,16 @@ const MediaRow = (props) => {
   };
 
   return (
-    <tr key={item.media_id}>
+    <tr
+      key={item.media_id}
+      className="text-center *:p-2 *:outline-1 *:outline-white"
+    >
       <td>
-        <img src={item.thumbnail} alt={item.title} />
+        <img
+          src={item.thumbnail}
+          alt={item.title}
+          className="h-32 w-32 object-cover"
+        />
       </td>
       <td>{item.title}</td>
       <td>{item.description}</td>
@@ -20,7 +27,11 @@ const MediaRow = (props) => {
       <td>{item.filesize}</td>
       <td>{item.media_type}</td>
       <td>
-        <Link to="/single" state={{item}}>
+        <Link
+          to="/single"
+          state={{item}}
+          className="bg-stone-700 p-2 hover:bg-stone-900"
+        >
           Show
         </Link>
       </td>

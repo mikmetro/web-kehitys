@@ -26,8 +26,8 @@ const LoginForm = () => {
   );
   return (
     <>
-      <h1>Login</h1>
-      <form onSubmit={handleSubmit}>
+      <h1 className="text-3xl font-bold">Login</h1>
+      <form onSubmit={handleSubmit} className="flex flex-col items-center p-8">
         <TextInput
           label="Username"
           name="username"
@@ -44,7 +44,11 @@ const LoginForm = () => {
           onChange={handleInputChange}
           autoComplete="current-password"
         />
-        <button type="submit" onClick={doLogin}>
+        <button
+          type="submit"
+          onClick={doLogin}
+          className="w-fit cursor-pointer bg-stone-900 p-2"
+        >
           Login
         </button>
       </form>

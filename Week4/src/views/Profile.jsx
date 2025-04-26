@@ -19,7 +19,7 @@ const Profile = () => {
 
   return (
     <>
-      <h2>Profile</h2>
+      <h2 className="text-2xl font-bold">Profile</h2>
       {user && (
         <>
           <p>Username: {user.username}</p>

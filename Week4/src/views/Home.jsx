@@ -12,7 +12,7 @@ const Home = () => {
       <h2>My Media</h2>
       <table>
         <thead>
-          <tr>
+          <tr className="*:p-2 *:outline-1 *:outline-white">
             <th>Thumbnail</th>
             <th>Title</th>
             <th>Description</th>

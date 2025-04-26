@@ -39,8 +39,11 @@ const Upload = () => {
 
   return (
     <>
-      <h1>Upload</h1>
-      <form onSubmit={handleSubmit}>
+      <h1 className="text-2xl font-bold">Upload</h1>
+      <form
+        onSubmit={handleSubmit}
+        className="*:not[img]:w-full flex flex-col items-center px-16"
+      >
         <TextInput
           label="Title"
           name="title"
@@ -48,16 +51,17 @@ const Upload = () => {
           id="title"
           onChange={handleInputChange}
         />
-        <div>
+        <div className="w-full">
           <label htmlFor="description">Description</label>
           <textarea
             name="description"
             rows={5}
             id="description"
+            className="my-2.5 block w-full rounded border-2 bg-stone-900 p-2.5"
             onChange={handleInputChange}
           ></textarea>
         </div>
-        <div>
+        <div className="w-full">
           <label htmlFor="file">File</label>
           <input
             name="file"
@@ -65,6 +69,7 @@ const Upload = () => {
             id="file"
             accept="image/*, video/*"
             onChange={handleFileChange}
+            className="my-2.5 block w-full rounded border-2 bg-stone-900 p-2.5"
           />
         </div>
         <img
@@ -75,10 +80,12 @@ const Upload = () => {
           }
           alt="preview"
           width="200"
+          className="block aspect-square rounded-lg object-cover"
         />
         <button
           type="submit"
           disabled={file && inputs?.title.length > 3 ? false : true}
+          className="mt-4 w-fit cursor-pointer rounded bg-stone-900 p-2"
         >
           Upload
         </button>
