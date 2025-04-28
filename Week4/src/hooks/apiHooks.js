@@ -179,4 +179,46 @@ const useMedia = () => {
   return {mediaArray, postMedia, deleteMedia, modifyMedia};
 };
 
-export {useAuthentication, useUser, useFile, useMedia};
+const useLike = () => {
+  const getLikesByMediaId = async (id) => {
+    const data = await fetchData(
+      `${import.meta.env.VITE_MEDIA_API}/likes/bymedia/${id}`,
+    );
+
+    return data;
+  };
+
+  const postLike = async (media_id, token) => {
+    const fetchOptions = {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+        Authorization: 'Bearer: ' + token,
+      },
+      body: JSON.stringify({media_id}),
+    };
+    return await fetchData(
+      `${import.meta.env.VITE_MEDIA_API}/likes`,
+      fetchOptions,
+    );
+  };
+
+  const deleteLike = async (id, token) => {
+    const fetchOptions = {
+      method: 'DELETE',
+      headers: {
+        'content-type': 'application/json',
+        Authorization: 'Bearer: ' + token,
+      },
+    };
+
+    const mediaResult = await fetchData(
+      `${import.meta.env.VITE_MEDIA_API}/likes/${id}`,
+      fetchOptions,
+    );
+  };
+
+  return {getLikesByMediaId, postLike, deleteLike};
+};
+
+export {useAuthentication, useUser, useFile, useMedia, useLike};

@@ -1,3 +1,5 @@
+import Likes from './Likes';
+
 const SingleView = (props) => {
   const {item, setSelectedItem} = props;
 
@@ -14,7 +16,7 @@ const SingleView = (props) => {
     <>
       {item && (
         <dialog open>
-          <button onClick={handleClick}>Close</button>
+          <button onClick={handleClick}>Close</button> <Likes /> <Likes />
           {item.media_type.includes('video') ? (
             <video src={item.filename} controls></video>
           ) : (

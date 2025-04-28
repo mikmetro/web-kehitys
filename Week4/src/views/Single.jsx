@@ -1,4 +1,7 @@
 import {useLocation, useNavigate} from 'react-router';
+import Likes from '../components/Likes';
+import {useLike} from '../hooks/apiHooks';
+import {useState} from 'react';
 
 const Single = () => {
   const {state} = useLocation();
@@ -22,6 +25,7 @@ const Single = () => {
           )}
           <h3>Title: {item.title}</h3>
           <p>{item.description}</p>
+          <Likes id={item.media_id} />
         </div>
       )}
     </>
