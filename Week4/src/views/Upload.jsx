@@ -6,7 +6,7 @@ import TextInput from '../components/ui/TextInput';
 const Upload = () => {
   const [file, setFile] = useState(null);
   const {postFile} = useFile();
-  const {postMedia} = useMedia();
+  const {postMedia} = useMedia(false);
 
   // Upload.jsx
   const doUpload = async () => {

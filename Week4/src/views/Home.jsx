@@ -4,7 +4,7 @@ import SingleView from '../components/SingleView';
 import {useMedia} from '../hooks/apiHooks.js';
 
 const Home = () => {
-  const {mediaArray, modifyMedia, deleteMedia} = useMedia();
+  const {mediaArray, modifyMedia, deleteMedia} = useMedia(true);
   const [selectedItem, setSelectedItem] = useState(null);
 
   return (

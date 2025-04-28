@@ -44,11 +44,7 @@ const LoginForm = () => {
           onChange={handleInputChange}
           autoComplete="current-password"
         />
-        <button
-          type="submit"
-          onClick={doLogin}
-          className="w-fit cursor-pointer bg-stone-900 p-2"
-        >
+        <button type="submit" className="w-fit cursor-pointer bg-stone-900 p-2">
           Login
         </button>
       </form>

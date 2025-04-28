@@ -1,8 +1,8 @@
 import {fetchData} from '../utils/fetchData';
-import {useEffect, useState} from 'react';
+import {useCallback, useEffect, useState} from 'react';
 
 const useAuthentication = () => {
-  const postLogin = async (inputs) => {
+  const postLogin = useCallback(async (inputs) => {
     const fetchOptions = {
       method: 'POST',
       headers: {
@@ -18,7 +18,7 @@ const useAuthentication = () => {
     console.log(loginResult);
 
     return loginResult;
-  };
+  }, []);
   return {postLogin};
 };
 
@@ -37,7 +37,7 @@ const useUser = () => {
     );
   };
 
-  const getUserByToken = async (token) => {
+  const getUserByToken = useCallback(async (token) => {
     const fetchOptions = {
       headers: {
         Authorization: 'Bearer: ' + token,
@@ -50,7 +50,7 @@ const useUser = () => {
     console.log('userResult', userResult);
 
     return userResult;
-  };
+  }, []);
 
   return {getUserByToken, postUser};
 };
@@ -80,11 +80,11 @@ const useFile = () => {
   return {postFile};
 };
 
-const useMedia = () => {
+const useMedia = (listMedia = true) => {
   const [mediaArray, setMediaArray] = useState([]);
 
   useEffect(() => {
-    getMedia();
+    if (listMedia) getMedia();
   }, []);
 
   const getMedia = async () => {
@@ -180,13 +180,13 @@ const useMedia = () => {
 };
 
 const useLike = () => {
-  const getLikesByMediaId = async (id) => {
+  const getLikesByMediaId = useCallback(async (id) => {
     const data = await fetchData(
       `${import.meta.env.VITE_MEDIA_API}/likes/bymedia/${id}`,
     );
 
     return data;
-  };
+  }, []);
 
   const postLike = async (media_id, token) => {
     const fetchOptions = {

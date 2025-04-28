@@ -17,7 +17,12 @@ const Single = () => {
     <>
       {item && (
         <div>
-          <button onClick={() => navigate(-1)}>Close</button>
+          <button
+            onClick={() => navigate(-1)}
+            className="cursor-pointer rounded bg-red-500 p-2"
+          >
+            Close
+          </button>
           {item.media_type.includes('video') ? (
             <video src={item.filename} controls></video>
           ) : (
