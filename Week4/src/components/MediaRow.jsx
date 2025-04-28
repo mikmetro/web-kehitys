@@ -1,25 +1,26 @@
 import PropTypes from 'prop-types';
 import {Link} from 'react-router';
 import {useUserContext} from '../hooks/contextHooks';
-import {useMedia} from '../hooks/apiHooks';
+import {useState} from 'react';
+import EditDialog from './EditDialog';
 
 const MediaRow = (props) => {
   const {item, setSelectedItem} = props;
   const {user} = useUserContext();
-
-  const handleClick = (item) => {
-    setSelectedItem(item);
-  };
+  const [visible, setVisible] = useState(true);
+  const [showEdit, setShowEdit] = useState(false);
 
   const handleDelete = async () => {
     const token = localStorage.getItem('token');
-    await props.deleteMedia(item.media_id, token);
-    window.location.reload();
+    const result = await props.deleteMedia(item.media_id, token);
+    if (result) setVisible(false);
   };
 
   const handleModify = () => {
-    console.log('asdsa');
+    setShowEdit(!showEdit);
   };
+
+  if (!visible) return;
 
   return (
     <tr
@@ -61,6 +62,13 @@ const MediaRow = (props) => {
             >
               Delete
             </button>
+            {showEdit && (
+              <EditDialog
+                item={item}
+                modifyMedia={props.modifyMedia}
+                onClose={() => setShowEdit(false)}
+              />
+            )}
           </>
         )}
       </td>

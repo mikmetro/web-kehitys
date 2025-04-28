@@ -155,14 +155,15 @@ const useMedia = () => {
     }
   };
 
-  const modifyMedia = async (id, newFields, token) => {
+  const modifyMedia = async (id, inputs, token) => {
+    console.log(inputs, token);
     const fetchOptions = {
       method: 'PUT',
       headers: {
         'content-type': 'application/json',
         Authorization: 'Bearer: ' + token,
       },
-      body: JSON.stringify({...newFields}),
+      body: JSON.stringify({...inputs}),
     };
     try {
       const mediaResult = await fetchData(
